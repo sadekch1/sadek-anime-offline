@@ -1,0 +1,15 @@
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
+.idea/
+local.properties
+tools/*.json
+# v2: never commit Firebase options, signing keys or keystores
+lib/firebase_options.dart
+android/key.properties
+android/keystore/
+android/app/google-services.json
+google-services.json

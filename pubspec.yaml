@@ -1,0 +1,38 @@
+name: sadek_anime_offline
+description: sadek-anime-offline - offline-first anime metadata browser.
+publish_to: 'none'
+version: 2.0.1+2
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  shared_preferences: ^2.2.3
+  sqflite: ^2.3.3
+  path: ^1.9.0
+  path_provider: ^2.1.3
+  http: ^1.2.1
+  cached_network_image: ^3.3.1
+  flutter_cache_manager: ^3.3.2
+  provider: ^6.1.2
+  # v2: Google sign-in + Firestore sync (optional — the app works fully
+  # offline without Firebase configured; see lib/data/remote/firebase_sync.dart)
+  firebase_core: ^3.6.0
+  firebase_auth: ^5.3.1
+  cloud_firestore: ^5.4.4
+  google_sign_in: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/db/anime.db
+    - assets/icon/icon.png
+    - assets/icon/icon_dark.png

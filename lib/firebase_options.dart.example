@@ -1,0 +1,36 @@
+// TEMPLATE ONLY — do NOT rename this file to firebase_options.dart and do
+// NOT commit a real google-services.json with secrets to a public repo.
+// This app does NOT use FirebaseOptions in code: Firebase.initializeApp()
+// reads android/app/google-services.json (added by the CI workflow only when
+// the GOOGLE_SERVICES_JSON secret exists). If Firebase is not configured,
+// the app works fully offline and sign-in shows a setup message.
+//
+// To enable Google sign-in + Firestore sync (once):
+//   1. Firebase console -> create project -> enable Authentication (Google
+//      provider) and Firestore (production mode, rules: only the signed-in
+//      user can read/write users/{uid}/**).
+//   2. Add Android app, package name: com.sadek  (the CI workflow creates
+//      the Android project as --org com.sadek --project-name
+//      sadek_anime_offline, so the applicationId is com.sadek.sadek_anime_offline;
+//      register BOTH com.sadek.sadek_anime_offline and, if Firebase insists
+//      on a second app, com.sadek — use the one whose SHA-1 you add).
+//   3. SHA-1: generate ONE fixed release keystore (see README, "Fixed
+//      signing key"), run `keytool -list -v -keystore release.keystore`
+//      and paste the SHA-1 fingerprint into the Firebase Android app.
+//      A fixed key is required: GitHub's debug key changes every build,
+//      which breaks updates over the old app AND Google sign-in.
+//   4. Download google-services.json and add it as a GitHub secret named
+//      GOOGLE_SERVICES_JSON (whole file content, base64 or raw JSON).
+//      The workflow writes it to android/app/google-services.json only
+//      when the secret exists; without it the build still succeeds and
+//      the app simply runs without sync.
+//
+// Firestore rules (paste into Firestore -> Rules):
+//   rules_version = '2';
+//   service cloud.firestore {
+//     match /databases/{database}/documents {
+//       match /users/{userId}/{document=**} {
+//         allow read, write: if request.auth != null && request.auth.uid == userId;
+//       }
+//     }
+//   }
